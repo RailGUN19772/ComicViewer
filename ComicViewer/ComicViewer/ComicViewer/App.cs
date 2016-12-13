@@ -2,29 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 namespace ComicViewer
 {
     public class App : Application
-    {
+    {                             
         public App()
         {
             // The root page of your application
-            MainPage = new ContentPage
+            var np = new NavigationPage(new MainMenu())     //MainMenuに画面推移
             {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                         new Label {
-                             HorizontalTextAlignment = TextAlignment.Center,
-                             Text = "Welcome to Xamarin Forms!"
-                         }
-                     }
-                }
+                Title = "ナビゲーション スタック",
+                // ナビゲーションバー TextColor
+                BarTextColor = Color.White,
+                // ナビゲーションバックグランドバーカラー
+                BarBackgroundColor = Color.Black
             };
+
+            // The root page of your application
+            MainPage = np;
         }
 
         protected override void OnStart()
