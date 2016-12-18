@@ -17,7 +17,6 @@ namespace ComicViewer
             {
                 Text = "Select the File",
                 HeightRequest = 100,
-                //WidthRequest = 150,
             };
             var button2 = new Button
             {
@@ -36,16 +35,34 @@ namespace ComicViewer
                     VerticalOptions = LayoutOptions.Center,
                 }
             };
-            
 
             button1.Clicked += async (Sender, e) =>
             {
-                await Navigation.PushAsync(new SelectFile());
+
+                if (Application.Current.Properties.ContainsKey("sLayout") == false)
+                {
+                    Application.Current.Properties["sLayout"] = "List";
+                    await Navigation.PushAsync(new Ver());
+                }
+                else if (Application.Current.Properties.ContainsKey("sLayout") == true)
+                {
+                    var layoutView = Application.Current.Properties["sLayout"] as string;
+
+                    if(layoutView == "List")
+                    {
+                        await Navigation.PushAsync(new SelectFile());
+                    }
+                    else if(layoutView == "Block")
+                    {
+                        await Navigation.PushAsync(new Config());
+                    }
+                }
+
             };
 
-            button2.Clicked += delegate
+            button2.Clicked += async (Sender, e) =>
             {
-                content.DisplayAlert("この機能はまだ使えません", "しばらくしたら実装します", "OK");
+                await Navigation.PushAsync(new Config());
             };
 
             button3.Clicked += async (Sender, e) =>
@@ -96,7 +113,6 @@ namespace ComicViewer
             Content = new StackLayout
             {
                 Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
-                //HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
                 Spacing = 50,
                 Children =

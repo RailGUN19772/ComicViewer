@@ -12,8 +12,7 @@ namespace ComicViewer
     {
         public EpisodePage(string episodeName,string[] files)
         {
-            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
-                        
+                                    
             StackLayout stackLayout = new StackLayout
             {
                 Spacing = 0,
@@ -28,6 +27,7 @@ namespace ComicViewer
 
             ScrollView scrollView = new ScrollView
             {
+                Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
                 BackgroundColor = Color.White,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 Content = stackLayout,
