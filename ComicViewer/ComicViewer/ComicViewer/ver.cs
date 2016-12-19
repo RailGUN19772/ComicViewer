@@ -23,7 +23,7 @@ namespace ComicViewer
                             "        エピソードページのデザインの修正\n"+
                             "        メインページのデザインの修正、画像の追加\n";
 
-            Content = new StackLayout
+            StackLayout stackLayout = new StackLayout
             {
                 Spacing = 30,
                 Children = {
@@ -35,6 +35,14 @@ namespace ComicViewer
                              "HUAWEI Media PAD 7 Lite Android4.0.3\n"+
                              "\nWindows10 AnniversaryUpdate"}
                 }
+            };
+
+            Content = new ScrollView
+            {
+                Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
+                BackgroundColor = Color.White,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Content = stackLayout,
             };
         }
     }

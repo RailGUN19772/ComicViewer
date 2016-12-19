@@ -13,72 +13,28 @@ namespace ComicViewer
     {
         public MainMenu()
         {
-            var button1 = new Button
+            var selectFile = new Button
             {
                 Text = "Select the File",
                 HeightRequest = 100,
             };
-            var button2 = new Button
+
+            var config = new Button
             {
                 Text = "Config"
             };
-            var button3 = new Button
+
+            var about = new Button
             {
                 Text = "About"
             };
 
-            var content = new ContentPage
-            {
-                Title = "Main Menu",
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                }
-            };
-
-            button1.Clicked += async (Sender, e) =>
-            {
-
-                if (Application.Current.Properties.ContainsKey("sLayout") == false)
-                {
-                    Application.Current.Properties["sLayout"] = "List";
-                    await Navigation.PushAsync(new Ver());
-                }
-                else if (Application.Current.Properties.ContainsKey("sLayout") == true)
-                {
-                    var layoutView = Application.Current.Properties["sLayout"] as string;
-
-                    if(layoutView == "List")
-                    {
-                        await Navigation.PushAsync(new SelectFile());
-                    }
-                    else if(layoutView == "Block")
-                    {
-                        await Navigation.PushAsync(new Config());
-                    }
-                }
-
-            };
-
-            button2.Clicked += async (Sender, e) =>
-            {
-                await Navigation.PushAsync(new Config());
-            };
-
-            button3.Clicked += async (Sender, e) =>
-            {
-                await Navigation.PushAsync(new Ver());
-            };
-
-            Title = "Main Menu";
-
             var content1 = new StackLayout
             {
                 VerticalOptions = LayoutOptions.Center,
-
                 Children =
                 {
-                    button1,
+                    selectFile,
                 }
             };
 
@@ -90,8 +46,8 @@ namespace ComicViewer
                 Spacing = 30,
                 Children =
                 {
-                    button2,
-                    button3,
+                    config,
+                    about,
                 },
             };
 
@@ -105,10 +61,14 @@ namespace ComicViewer
                     {
                         HorizontalTextAlignment = TextAlignment.End,
                         VerticalTextAlignment = TextAlignment.End,
-                        Text = "Ver 1.1"
+                        Text = "Ver 1.2"
                     },
                 },
             };
+            BackgroundImage = "KST.JPG";
+            //Android:AndroidResourceとしてResources/drawableに追加
+            //iOS:Resourcesにリンクとして追加
+            //UWP:プロジェクト直下にリンクとして追加
 
             Content = new StackLayout
             {
@@ -120,8 +80,44 @@ namespace ComicViewer
                     content1,
                     content2,
                     ver,
+                    //BackGroundImage,
                 },
-            };       
+            };
+
+            selectFile.Clicked += async (Sender, e) =>
+            {
+
+                if (Application.Current.Properties.ContainsKey("sLayout") == false)
+                {
+                    Application.Current.Properties["sLayout"] = "List";
+                    await Navigation.PushAsync(new SelectFileListView());
+                }
+
+                else if (Application.Current.Properties.ContainsKey("sLayout") == true)
+                {
+                    var layoutView = Application.Current.Properties["sLayout"] as string;
+
+                    if(layoutView == "List")
+                    {
+                        await Navigation.PushAsync(new SelectFileListView());
+                    }
+                    else if(layoutView == "Block")
+                    {
+                        await Navigation.PushAsync(new SelectFileBlockView());
+                    }
+                }
+
+            };
+
+            config.Clicked += async (Sender, e) =>
+            {
+                await Navigation.PushAsync(new Config());
+            };
+
+            about.Clicked += async (Sender, e) =>
+            {
+                await Navigation.PushAsync(new Ver());
+            };      
         }
     }
 }

@@ -25,16 +25,13 @@ namespace ComicViewer
                     Source = ImageSource.FromResource($"ComicViewer.EpisodeImage.{episodeName}.{s}")
                 });
 
-            ScrollView scrollView = new ScrollView
+            Content = new ScrollView
             {
                 Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
                 BackgroundColor = Color.White,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 Content = stackLayout,
             };
-
-
-            Content = scrollView;
         }
     }
 }

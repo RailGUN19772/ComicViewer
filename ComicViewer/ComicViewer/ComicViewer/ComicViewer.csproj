@@ -40,7 +40,8 @@
     <Compile Include="EpisodePage.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectFile.cs" />
+    <Compile Include="SelectFileBlockView.cs" />
+    <Compile Include="SelectFileListView.cs" />
     <Compile Include="ver.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,10 +61,19 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="KST.JPG" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EpisodeImage\Episode1\Page1.jpg" />
     <EmbeddedResource Include="EpisodeImage\Episode1\Screenshot.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Image\SelectFileBoxView\test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\SelectFileListView\ListView.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

@@ -19,19 +19,26 @@ namespace ComicViewer
                 Text = "Change",
             };
 
-            var stackLayout = new StackLayout
+            string vm = Application.Current.Properties["sLayout"] as string;
+
+            var viewMode = new Label
             {
+                Text = "現在の表示："+vm,
+            };
+
+            Content = new StackLayout
+            {
+                Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
                 Children =
                 {
                     new Label
                     {
                         Text = "エピソード表示の変更"
                     },
+                    viewMode,
                     buttonConfig,
                 },
             };
-
-            Content = stackLayout;
 
             buttonConfig.Clicked += (sender, e) =>
             {

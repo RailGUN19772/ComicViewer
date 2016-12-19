@@ -13,7 +13,7 @@ namespace ComicViewer
         public App()
         {
             // The root page of your application
-            var np = new NavigationPage(new MainMenu())     //MainMenuに画面推移
+            var mp = new NavigationPage(new MainMenu())     //MainMenuに画面推移
             {
                 Title = "ナビゲーション スタック",
                 // ナビゲーションバー TextColor
@@ -23,7 +23,7 @@ namespace ComicViewer
             };
 
             // The root page of your application
-            MainPage = np;
+            MainPage = mp;
         }
 
         protected override void OnStart()
